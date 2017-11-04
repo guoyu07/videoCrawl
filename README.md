@@ -6,4 +6,3 @@
     ```
 - 视频保存在E盘的video目录
     - ![视频抓取视频](https://github.com/laternkiwis/videoCrawl/blob/master/1..PNG)
-- 多线程抓取以及完善待续
