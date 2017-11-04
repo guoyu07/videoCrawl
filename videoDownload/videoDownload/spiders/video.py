@@ -42,13 +42,12 @@ class VideoSpider(scrapy.Spider):
                 if j==1:
                     for obj in item["data"]:
                         if obj["vedioCode"]:
-                            url="https://plvod01.videocc.net/1f41d2259c/"+obj["vedioCode"][-3:-2]+'/'+obj["vedioCode"]+".flv?"
-                            r=requests.get(url,stream=True)
-                            with open("E:\\video\\"+obj["title"]+".flv","wb") as f:
-                                f.write(r.content)
+                            self.downloadVideo(obj)
                 else:
                     if item["vedioCode"]:
-                        url="https://plvod01.videocc.net/1f41d2259c/"+item["vedioCode"][-3:-2]+'/'+item["vedioCode"]+".flv?"
-                        r=requests.get(url,stream=True)
-                        with open("E:\\video\\"+item["title"]+".flv","wb") as f:
-                            f.write(r.content)
+                        self.downloadVideo(item)
+    def downloadVideo(self,item):
+        url="https://plvod01.videocc.net/1f41d2259c/"+item["vedioCode"][-3:-2]+'/'+item["vedioCode"]+".flv?"
+        r=requests.get(url,stream=True)
+        with open("E:\\video\\"+item["title"]+".flv","wb") as f:
+            f.write(r.content)
